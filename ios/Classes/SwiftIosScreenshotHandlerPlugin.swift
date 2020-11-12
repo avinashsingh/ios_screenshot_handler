@@ -20,6 +20,9 @@ public class SwiftIosScreenshotHandlerPlugin: NSObject, FlutterPlugin {
         channel.invokeMethod("onScreenshot", arguments: nil);
     }
     UIScreen.main.addObserver(instance, forKeyPath: "captured", options: .new, context: nil)
+    if #available(iOS 11.0, *) {
+      videoCaptured = UIScreen.main.isCaptured
+    }
   }
 
   
